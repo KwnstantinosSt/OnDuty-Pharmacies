@@ -3,18 +3,7 @@ function date(){
     var d = new Date();
     var n = d.toDateString();
     $("#date")[0].innerText = n;
-    callData();
-    
-}
-
-
-function callData(){
-    $.ajax({
-        url: "api/read.php",
-        method:"GET",
-        success: fillData
-      });
-
+       
 }
 
 
@@ -22,7 +11,7 @@ function createDiv(){
     var div = document.createElement("div");
     div.setAttribute("id","Shadowdivs");
     div.setAttribute("class","container p-3 my-3 bg-dark text-white text-center");
-    document.body.insertBefore(div,document.body.childNodes[8]);
+    document.body.insertBefore(div,document.body.childNodes[6]);
     var h1 = document.createElement("h1");
     var b = document.createElement("b");
     var i = document.createElement("i");
@@ -46,6 +35,7 @@ function createDiv(){
 function createSpace(){
     var div = document.createElement("div");
     div.setAttribute("class","container");
+    div.setAttribute("id","kena");
     document.body.insertBefore(div,document.body.childNodes[9]);
     var hr = document.createElement("hr");
     div.appendChild(hr);
@@ -64,7 +54,7 @@ function fillData(data){
 
 
     for(i=0;i<$("div[id=Shadowdivs]").length;i++){
-        if(counter == data.length){break;}
+        if(counter == data.data.length){break;}
     $("div[id=Shadowdivs]")[i].children[0].innerText = data.data[counter].title;
     $("div[id=Shadowdivs]")[i].children[2].innerText = data.data[counter].phone;
     $("div[id=Shadowdivs]")[i].children[3].innerText = data.data[counter].address;
@@ -94,8 +84,29 @@ function CheckOpenNowPharmacy(){
    }
 
 
+}
 
 
 
+function selPharm(){
+    $("#perioxi")[0].innerText = $("#selected").find(":selected").text();
+    var reg = $("#selected").val();
+    clearSite();
+
+    $.ajax({
+        url: "api/read.php",
+        data: {"region": reg},
+        success:fillData
+      });
+
+}
+
+
+function clearSite(){
+
+    for(var i=0;i<$("div[id=Shadowdivs]").length;i++){
+        $("div[id=Shadowdivs]").remove();
+        $("div[id=kena]").remove();
+    }
 
 }

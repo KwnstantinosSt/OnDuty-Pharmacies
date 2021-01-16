@@ -7,7 +7,8 @@ include_once('../core/pharmachy.php');
 
 if($_SERVER['REQUEST_METHOD'] === 'GET'){
 
-    $result = getFarmachyData();
+    $reg = $_GET["region"];
+    $result = getFarmachyData($reg);
     echo json_encode($result);
 
 }else{

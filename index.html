@@ -33,11 +33,26 @@
   <div class="container text-center">
     <h1>ΕΦΗΜΕΡΕΥΟΝΤΑ ΦΑΡΜΑΚΕΙΑ</h1><br>
     <p>Εμφανίζονται τα σημερινά εφημερεύοντα φαρμακεία</p>
-    <p><strong>Περιοχή: </strong><span><i><u>Αθήνα - Αγία Βαρβάρα</u></i></span></p>
+      <form>
+        <div class="form-group form-group-*">
+          <label for="sel1"><p><strong>Διάλεξε Περιοχή:</strong></p></label>
+          <select class="form-control" id="selected" onchange="selPharm()">
+            <option disabled selected value> -- δώσε μια επιλογή -- </option>
+            <option value="angelochori-thessalonikis">Αγγελοχώρι-Θεσσαλονίκης</option>
+            <option value="agia-aikaterini-thessaloniki">Αγία Αικατερίνη (Θεσσαλονίκη)</option>
+            <option value="agia-anastasia-peristeri-attikis">Αγία Αναστασία (Περιστέρι Αττικής)</option>
+            <option value="agia-varvara-attikis">Αγία Βαρβάρα</option>
+            <option value="agia-varvara-argyroupoli-attikis">Αγία Βαρβάρα (Αργυρούπολη Αττικής)</option>
+            <option value="agia-varvara-dafni-attikis">Αγία Βαρβάρα (Δάφνη Αττικής)</option>
+          </select>
+        </form>
+    </p>
+    <p><strong>Περιοχή: </strong><span><i><u id="perioxi"></u></i></span></p>
     <p><strong>Ημέρα: </strong><span><i><u id="date"></u></i></span></p>
   </div><br>
   <div class="container text-center">
     <footer><small><i> 	&#169;2021 Kwnstantinos Stougiannou</i></small></footer>
+  </div>
   </div>
 </body>
 </html>

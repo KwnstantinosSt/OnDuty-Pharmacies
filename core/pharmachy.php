@@ -1,10 +1,13 @@
 <?php
     include('../lib/simple_html_dom.php');
 
-    function getFarmachyData(){
+    function getFarmachyData($reg){
 
     $date = date("d/m/Y");
-    $html = file_get_html("https://www.xo.gr/efimerevonta-farmakeia/agia-varvara-attikis/?date=" . $date);
+    $region = $reg;
+    $url = "https://www.xo.gr/efimerevonta-farmakeia/$region/?date=$date";
+    $html = file_get_html(($url));
+    //$html = file_get_html("https://www.xo.gr/efimerevonta-farmakeia/agia-varvara-attikis/?date=" . $date);
     $title = $html->find('h1',0);
     $pageTitle = $title->plaintext;
     $p = $html->find('div[class=span12 NoticeArea PharmacyArea] p',0)->plaintext;
