@@ -61,8 +61,7 @@ function fillData(data){
         createDiv();
         createSpace();
     }
-   // console.log($("div[id=Shadowdivs]").length);
-   // console.log($("div[id=Shadowdivs]")[0].children);
+
 
     for(i=0;i<$("div[id=Shadowdivs]").length;i++){
         if(counter == data.length){break;}
@@ -72,6 +71,31 @@ function fillData(data){
     $("div[id=Shadowdivs]")[i].children[4].innerText = data.data[counter].orario;
     counter++;
  }
+
+ CheckOpenNowPharmacy();
+
+
+}
+
+
+
+function CheckOpenNowPharmacy(){
+   //console.log($("div[id=Shadowdivs]").length);
+
+   for(var i=0;i<$("div[id=Shadowdivs]").length;i++){
+
+    var openNow = $("div[id=Shadowdivs]")[i].children[4].textContent;
+    var check = /ΑΝΟΙΧΤΟ ΤΩΡΑ/.test(openNow);
+    if(check){
+        $("div[id=Shadowdivs]")[i].children[4].style.color = "yellow";
+        
+        }
+
+   }
+
+
+
+
 
 
 }
