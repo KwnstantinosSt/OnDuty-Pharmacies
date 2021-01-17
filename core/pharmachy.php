@@ -1,12 +1,15 @@
 <?php
     include('../lib/simple_html_dom.php');
+   
 
     function getFarmachyData($reg){
-
+    
     $date = date("d/m/Y");
     $region = $reg;
     $url = "https://www.xo.gr/efimerevonta-farmakeia/$region/?date=$date";
-    $html = file_get_html(($url));
+    $htmlt = curl_get_file_contents($url);
+    $html = str_get_html($htmlt);
+    //$html = file_get_html(($url));
     //$html = file_get_html("https://www.xo.gr/efimerevonta-farmakeia/agia-varvara-attikis/?date=" . $date);
     $title = $html->find('h1',0);
     $pageTitle = $title->plaintext;
@@ -50,11 +53,18 @@ for($i=0;$i<$phar_num;$i++){
 
 
 
- 
-   
-    
 
+function curl_get_file_contents($URL)
+    {
+        $c = curl_init();
+        curl_setopt($c, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($c, CURLOPT_URL, $URL);
+        $contents = curl_exec($c);
+        curl_close($c);
 
+        if ($contents) return $contents;
+        else return FALSE;
+    }
 
 
 
