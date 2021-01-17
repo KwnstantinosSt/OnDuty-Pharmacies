@@ -52,6 +52,8 @@ function fillData(data){
         createSpace();
     }
 
+    $("#nres")[0].innerText = data.data.length;
+
 
     for(i=0;i<$("div[id=Shadowdivs]").length;i++){
         if(counter == data.data.length){break;}
