@@ -43,7 +43,10 @@ function createSpace(){
 }
 
 
-function fillData(data){
+function fillData(data,status,xhr){
+    
+    if(xhr.status == 200){
+
     var i;
     counter=0;
 
@@ -65,6 +68,14 @@ function fillData(data){
  }
 
  CheckOpenNowPharmacy();
+
+    }else if(xhr.status == 204){
+        $("#nres")[0].innerText = "0";
+        return alert("Δεν βρέθηκαν εφημερεύοντα σε αυτή τη περιοχή");
+    
+    }else{
+        return alert("Κάποιο σφάλμα συνέβη.");
+    }
 
 
 }
@@ -112,3 +123,4 @@ function clearSite(){
     }
 
 }
+

@@ -4,6 +4,8 @@
 
     function getFarmachyData($reg){
     
+    try{
+    
     $date = date("d/m/Y");
     $region = $reg;
     $url = "https://www.xo.gr/efimerevonta-farmakeia/$region/?date=$date";
@@ -12,8 +14,11 @@
     //$html = file_get_html(($url));
     //$html = file_get_html("https://www.xo.gr/efimerevonta-farmakeia/agia-varvara-attikis/?date=" . $date);
     $title = $html->find('h1',0);
+    if($title === null){return false;}
     $pageTitle = $title->plaintext;
+    if($pageTitle === null){return false;}
     $p = $html->find('div[class=span12 NoticeArea PharmacyArea] p',0)->plaintext;
+    if($p === null){return false;}
     $mainDiv = $html->find('div[class=row listResults pharmacies-list] ol',0); 
     $pharmachys = $mainDiv->children();
     $phar_num = sizeof($pharmachys);
@@ -49,8 +54,15 @@ for($i=0;$i<$phar_num;$i++){
 
     return $back_arr;
 
+    }catch(Exception $e){
+        echo $e->getMessage();
+        return false;
+
+    }
+
 }
 
+ 
 
 
 
