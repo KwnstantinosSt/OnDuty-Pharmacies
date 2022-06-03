@@ -78,7 +78,31 @@ function curl_get_file_contents($URL)
         else return FALSE;
     }
 
+function getRegionList()
+{
+    $json = file_get_contents(dirname(__FILE__).'/dataAll.json');
+    $json_data = json_decode($json,true);
+    $newData = bubble_Sort($json_data);
+    return $newData; 
+}
 
-
+function bubble_Sort($my_array)
+{
+	do
+	{
+		$swapped = false;
+		for( $i = 0, $c = count( $my_array ) - 1; $i < $c; $i++ )
+		{
+			if( $my_array[$i]["name"] > $my_array[$i + 1]["name"] )
+			{
+				list( $my_array[$i + 1], $my_array[$i] ) =
+						array( $my_array[$i], $my_array[$i + 1] );
+				$swapped = true;
+			}
+		}
+	}
+	while( $swapped );
+return $my_array;
+}
 
 ?>

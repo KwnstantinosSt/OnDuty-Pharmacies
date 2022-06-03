@@ -1,2 +1,2 @@
 # OnDuty-Pharmacies
-Shows today on-dudy pharmacies in Greece
+Shows today on-dudy pharmacies in Athens - Agia Varvara
